@@ -92,9 +92,6 @@ function App() {
       ) : (
         <div className="text-center text-3xl text-white pt-20">
           What can I help you with?
-          <span>As you know, Communication is difficult on Upwork because it is not a chat tool.
-So if possible, how about telegram communication?
-my ID: @higodev</span>
         </div>
       )}
       
