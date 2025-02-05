@@ -1,8 +1,8 @@
 const BotMessage = ({text}:{text: string}) => {
     return (
-        <div className="bg-[#1b1f1f] rounded-lg p-2">
-            <div className="font-bold p-2 text-white text-xl">Answer</div>
-              <div className={`inline-block w-full p-2 text-white`}>
+        <div className="bg-[#f6f3ec] rounded-lg p-2">
+            <h1 className="font-bold p-2 text-[#35302a] text-xl">Answer</h1>
+              <div className={`inline-block w-full p-2 text-[#574c3f]`}>
                 {text}
               </div>
         </div>

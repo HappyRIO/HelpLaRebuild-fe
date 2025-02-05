@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import UserMessage from '../components/userMessage';
-import BotMessage from '../components/botMessage';
-import SourceMessage from '../components/sourceMessage';
-import { ArrowRight } from 'lucide-react';
-import Thinking from '../components/thinking';
+import { useState, useEffect } from "react";
+import UserMessage from "../components/userMessage";
+import BotMessage from "../components/botMessage";
+import SourceMessage from "../components/sourceMessage";
+import { ArrowRight } from "lucide-react";
+import Thinking from "../components/thinking";
 
 interface Message {
   text: string;
-  type: 'user' | 'bot';
+  type: "user" | "bot";
   sources?: string[];
 }
 
 function App() {
-  const [input, setInput] = useState<string>('');
+  const [input, setInput] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [thinking, setThinking] = useState(false);
 
@@ -23,14 +23,14 @@ function App() {
     if (!input) return;
 
     // Append user message to messages
-    setMessages((prev) => [...prev, { text: input, type: 'user' }]);
+    setMessages((prev) => [...prev, { text: input, type: "user" }]);
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/search`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({ msg: input }),
       });
@@ -38,15 +38,21 @@ function App() {
       const data = await response.json();
       console.log(data);
       // Append bot response to messages
-      setMessages((prev) => [...prev, { text: data.response, sources: data.sources, type: 'bot' }]);
+      setMessages((prev) => [
+        ...prev,
+        { text: data.response, sources: data.sources, type: "bot" },
+      ]);
     } catch (error) {
       console.error("Error while fetching data:", error);
-      setMessages((prev) => [...prev, { text: "Error fetching response.", type: 'bot' }]);
+      setMessages((prev) => [
+        ...prev,
+        { text: "Error fetching response.", type: "bot" },
+      ]);
     }
 
     // Clear input
     setThinking(false);
-    setInput('');
+    setInput("");
   };
 
   useEffect(() => {
@@ -56,9 +62,8 @@ function App() {
     }
   }, [input, messages]);
 
-
   return (
-    <div className="flex flex-col h-screen w-screen bg-[#232627] pt-20 text-black">
+    <div className="flex flex-col h-screen w-screen bg-[#b7a58f] pt-20 text-black">
       {/* <button
         onClick={handleNewThread}
         className="absolute w-fit rounded-lg bg-gray-500 px-4 py-2 mx-4 text-white hover:bg-gray-600"
@@ -69,39 +74,41 @@ function App() {
       {messages.length ? (
         <div
           id="chat-container"
-          className="w-full flex-1 self-center overflow-y-auto max-w-3xl p-4 space-y-4"
+          className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
         >
-          {messages.map((msg, index) => (
-            <div key={index} className={msg.type === 'user' ? '' : ''}>
-              {/* <span className={`inline-block p-2 rounded-lg ${msg.type === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'}`}>
+          <div className="flex-1 max-w-4xl w-full items-center self-center p-4 pb-24 space-y-4">
+            {messages.map((msg, index) => (
+              <div key={index} className={msg.type === "user" ? "" : ""}>
+                {/* <span className={`inline-block p-2 rounded-lg ${msg.type === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'}`}>
                 {msg.text}
-              </span> */}  
-              {msg.type === 'user' ? (
-                <UserMessage text={msg.text} />
-              ) : (
-                <div>
-                  <BotMessage text={msg.text} />
-                  { msg.sources?.length && <SourceMessage sources={msg.sources} />}
-                  <hr className='my-10'/>
-                </div>
-              )}
-            </div>
-          ))}
-          {thinking && <Thinking />}
+              </span> */}
+                {msg.type === "user" ? (
+                  <UserMessage text={msg.text} />
+                ) : (
+                  <div>
+                    <BotMessage text={msg.text} />
+                    {msg.sources?.length && (
+                      <SourceMessage sources={msg.sources} />
+                    )}
+                    {/* <hr className='my-10 border-[#35302a]' /> */}
+                  </div>
+                )}
+              </div>
+            ))}
+            {thinking && <Thinking />}
+          </div>
         </div>
       ) : (
-        <div className="text-center text-3xl text-white pt-20">
+        <h1 className="text-center text-5xl text-[#574c3f] pt-60">
           What can I help you with?
-        </div>
+        </h1>
       )}
-      
+
       {/* Footer */}
       <div
-        className={`w-full p-4 self-center max-w-3xl ${
-          messages.length ? "border-t" : ""
-        }`}
+        className={`fixed bottom-0 w-full p-4  self-center max-w-4xl bg-transparent`}
       >
-        <form onSubmit={handleSubmit} className="relative flex">
+        <form onSubmit={handleSubmit} className="relative flex px-4 pr-6">
           <textarea
             disabled={thinking}
             placeholder="Ask a follow-up question..."
@@ -113,14 +120,14 @@ function App() {
                 handleSubmit(e);
               }
             }}
-            className="w-full p-4 pr-24 rounded-lg border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#1b1f1f] shadow-[0_0_15px_rgba(0,0,0,0.5)] shadow-white text-white"
+            className="w-full p-4 pr-24 rounded-lg border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#35302a] shadow-[0_0_15px_rgba(0,0,0,0.5)] shadow-white text-white"
             rows={2}
-            style={{ resize: 'none' }}
+            style={{ resize: "none" }}
             aria-label="Chat message input"
           />
           <button
             type="submit"
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-400 bg-gray-500 hover:text-gray-600"
+            className="absolute right-8 top-1/2 -translate-y-1/2 p-2 text-[#794444] bg-[#b7a58f] rounded-full hover:text-[#794444]"
             aria-label="Send message"
           >
             <ArrowRight />
