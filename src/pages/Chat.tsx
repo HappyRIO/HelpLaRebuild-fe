@@ -63,7 +63,7 @@ function App() {
   }, [input, messages]);
 
   return (
-    <div className="flex flex-col h-screen w-screen bg-inherit pt-20 text-black">
+    <div className="flex flex-col h-screen w-screen bg-[#ebe2d9] pt-20 text-black">
       {/* <button
         onClick={handleNewThread}
         className="absolute w-fit rounded-lg bg-gray-500 px-4 py-2 mx-4 text-white hover:bg-gray-600"
