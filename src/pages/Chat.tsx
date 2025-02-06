@@ -75,7 +75,7 @@ function App() {
           id="chat-container"
           className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
         >
-          <div className="flex-1 max-w-4xl w-full items-center self-center p-4 pb-2 space-y-4">
+          <div className="flex-1 max-w-5xl w-full items-center self-center p-4 pb-2 space-y-4">
             {messages.map((msg, index) => (
               <div key={index} className={msg.type === "user" ? "" : ""}>
                 {/* <span className={`inline-block p-2 rounded-lg ${msg.type === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'}`}>
@@ -100,7 +100,7 @@ function App() {
 
       {/* Footer */}
       <div
-        className={`fixed bottom-0 w-full p-4  self-center max-w-4xl bg-transparent`}
+        className={`fixed bottom-0 w-full p-4  self-center max-w-5xl bg-transparent`}
       >
         <form onSubmit={handleSubmit} className="relative flex px-4 pr-6">
           <textarea
@@ -114,7 +114,7 @@ function App() {
                 handleSubmit(e);
               }
             }}
-            className="w-full p-4 mr-44 rounded-full border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#f5f2eb] 1shadow-[0_0_15px_rgba(0,0,0,0.5)] 1shadow-white text-[#574c3f] text-2xl"
+            className="w-full p-4 py-8 mr-44 rounded-full border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#f5f2eb] 1shadow-[0_0_15px_rgba(0,0,0,0.5)] 1shadow-white text-[#574c3f] text-2xl"
             rows={1}
             style={{ resize: "none" }}
             aria-label="Chat message input"
