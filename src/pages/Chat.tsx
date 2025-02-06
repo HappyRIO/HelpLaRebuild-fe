@@ -114,14 +114,14 @@ function App() {
                 handleSubmit(e);
               }
             }}
-            className="w-full p-4 mr-32 rounded-full border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#f5f2eb] 1shadow-[0_0_15px_rgba(0,0,0,0.5)] 1shadow-white text-[#574c3f]"
+            className="w-full p-4 mr-32 rounded-full border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#f5f2eb] 1shadow-[0_0_15px_rgba(0,0,0,0.5)] 1shadow-white text-[#574c3f] text-2xl"
             rows={1}
             style={{ resize: "none" }}
             aria-label="Chat message input"
           />
           <button
             type="submit"
-            className="absolute right-8 top-1/2 -translate-y-1/2 p-3.5 px-6 text-xl text-[#794444] bg-[#342f29] rounded-full hover:text-[#794444]"
+            className="absolute right-8 top-1/2 -translate-y-1/2 py-8 px-12 text-3xl text-[#794444] bg-[#342f29] rounded-full hover:text-[#794444]"
             aria-label="Send message"
           >
             HELP
