@@ -75,7 +75,7 @@ function App() {
           id="chat-container"
           className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
         >
-          <div className="flex-1 max-w-5xl w-full items-center self-center p-4 pb-2 space-y-4">
+          <div className="flex-1 max-w-7xl w-full items-center self-center p-4 pb-2 space-y-4">
             {messages.map((msg, index) => (
               <div key={index} className={msg.type === "user" ? "" : ""}>
                 {/* <span className={`inline-block p-2 rounded-lg ${msg.type === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'}`}>
@@ -100,7 +100,7 @@ function App() {
 
       {/* Footer */}
       <div
-        className={`fixed bottom-0 w-full p-4  self-center max-w-5xl bg-transparent`}
+        className={`fixed bottom-0 w-full p-4  self-center max-w-7xl bg-transparent`}
       >
         <form onSubmit={handleSubmit} className="relative flex px-4 pr-6">
           <textarea
