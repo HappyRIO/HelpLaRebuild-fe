@@ -103,7 +103,8 @@ function App() {
         className={`fixed bottom-0 w-full p-4  self-center max-w-7xl bg-transparent`}
       >
         <form onSubmit={handleSubmit} className="relative flex px-4 pr-6">
-          <textarea
+          <input
+            type="text"
             disabled={thinking}
             // placeholder="Ask a follow-up question..."
             value={input}
@@ -114,14 +115,14 @@ function App() {
                 handleSubmit(e);
               }
             }}
-            className="w-full p-4 py-8 mr-44 rounded-full border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#f5f2eb] 1shadow-[0_0_15px_rgba(0,0,0,0.5)] 1shadow-white text-[#574c3f] text-2xl"
-            rows={1}
-            style={{ resize: "none" }}
+            className="w-full p-12 py-8 mr-44 rounded-full border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#f5f2eb] 1shadow-[0_0_15px_rgba(0,0,0,0.5)] 1shadow-white text-[#574c3f] text-2xl"
+            // rows={1}
+            // style={{ resize: "none" }}
             aria-label="Chat message input"
           />
           <button
             type="submit"
-            className="absolute right-8 top-1/2 -translate-y-1/2 py-8 px-12 text-3xl text-[#342f29] bg-[#b9a590]  rounded-full hover:text-[#794444]"
+            className="absolute right-8 top-1/2 -translate-y-1/2 py-8 px-12 text-3xl text-[#342f29] bg-[#b9a590]  rounded-full hover:bg-[#f5f2eb]"
             aria-label="Send message"
           >
             HELP
