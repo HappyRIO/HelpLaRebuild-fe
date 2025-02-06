@@ -63,44 +63,16 @@ function App() {
   }, [input, messages]);
 
   return (
-    <div className="flex flex-col h-screen w-screen bg-inherit 1bg-[#ebe2d9] pt-20 text-black">
+    <div className="flex flex-col h-screen w-screen bg-inherit 1bg-[#ebe2d9] text-black">
       {/* <button
         onClick={handleNewThread}
         className="absolute w-fit rounded-lg bg-gray-500 px-4 py-2 mx-4 text-white hover:bg-gray-600"
       >
         New Chat
       </button> */}
-      {/* Chat Area */}
-        <div
-          id="chat-container"
-          className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
-        >
-          <div className="flex-1 max-w-7xl w-full items-center self-center p-4 pb-2 space-y-4">
-            {messages.map((msg, index) => (
-              <div key={index} className={msg.type === "user" ? "" : ""}>
-                {/* <span className={`inline-block p-2 rounded-lg ${msg.type === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'}`}>
-                {msg.text}
-              </span> */}
-                {msg.type === "user" ? (
-                  <UserMessage text={msg.text} />
-                ) : (
-                  <div>
-                    <BotMessage text={msg.text} />
-                    {msg.sources?.length && (
-                      <SourceMessage sources={msg.sources} />
-                    )}
-                    {/* <hr className='my-10 border-[#35302a]' /> */}
-                  </div>
-                )}
-              </div>
-            ))}
-            {thinking && <Thinking />}
-          </div>
-        </div>
-
       {/* Footer */}
       <div
-        className={`fixed bottom-0 w-full p-4  self-center max-w-7xl bg-transparent`}
+        className={`w-full p-4  self-center max-w-7xl bg-transparent`}
       >
         <form onSubmit={handleSubmit} className="relative flex px-4 pr-6">
           <input
@@ -130,6 +102,36 @@ function App() {
           </button>
         </form>
       </div>
+
+      {/* Chat Area */}
+        <div
+          id="chat-container"
+          className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
+        >
+          <div className="flex-1 max-w-7xl w-full items-center self-center p-4 pb-2 space-y-4">
+            {messages.map((msg, index) => (
+              <div key={index} className={msg.type === "user" ? "" : ""}>
+                {/* <span className={`inline-block p-2 rounded-lg ${msg.type === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'}`}>
+                {msg.text}
+              </span> */}
+                {msg.type === "user" ? (
+                  <UserMessage text={msg.text} />
+                ) : (
+                  <div>
+                    <BotMessage text={msg.text} />
+                    {msg.sources?.length && (
+                      <SourceMessage sources={msg.sources} />
+                    )}
+                    {/* <hr className='my-10 border-[#35302a]' /> */}
+                  </div>
+                )}
+              </div>
+            ))}
+            {thinking && <Thinking />}
+          </div>
+        </div>
+
+      
     </div>
   );
 }
