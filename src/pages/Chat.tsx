@@ -124,7 +124,7 @@ function App() {
             className="absolute right-8 top-1/2 -translate-y-1/2 p-3.5 px-6 text-xl text-[#794444] bg-[#342f29] rounded-full hover:text-[#794444]"
             aria-label="Send message"
           >
-            Search
+            HELP
             {/* <ArrowRight /> */}
           </button>
         </form>
