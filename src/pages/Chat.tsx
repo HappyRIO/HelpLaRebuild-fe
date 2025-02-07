@@ -46,7 +46,7 @@ function App() {
       console.error("Error while fetching data:", error);
       setMessages((prev) => [
         ...prev,
-        { text: "Error fetching response.", type: "bot" },
+        { text: "Sorry, I can't provide answer. Please try again.", type: "bot" },
       ]);
     }
 
