@@ -26,7 +26,6 @@ function App() {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/search`, {
         method: "POST",
-        mode: "no-cros",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
