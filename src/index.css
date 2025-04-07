@@ -2,14 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: 'Jost', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/proximanova_regular.ttf') format('truetype');
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/proximanova_extrabold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  font-family: 'Proxima Nova', sans-serif;
 
   /* color-scheme: light dark; */
   color: rgba(255, 255, 255, 0.87);
-  /* background-color: #242424; */
   background-color: inherit;
 
   font-synthesis: none;
@@ -18,14 +29,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
   color: #535bf2;
-}
+} */
 
 body {
   margin: 0;
@@ -38,19 +49,16 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Anton';
 }
 
 button {
   font-family: 'Anton', sans-serif;
 }
-/* button:hover {
-  border-color: #646cff;
+
+input {
+  font-family: 'Proxima Nova', sans-serif;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -99,3 +107,7 @@ button:focus-visible {
   scrollbar-color: #888 transparent;
 }
 
+.markdown-body a {
+  color: #3366cc;
+  /* text-decoration: underline; */
+}

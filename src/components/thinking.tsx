@@ -17,9 +17,9 @@ const Thinking: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center space-x-2 text-[#574c3f] animate-pulse">
-      <div className="w-4 h-4 rounded-full bg-[#574c3f] animate-bounce"></div>
-      <span className="text-lg font-medium">Thinking{dots}</span>
+    <div className="flex items-center space-x-2 text-[#847733] animate-pulse">
+      <div className="w-4 h-4 rounded-full bg-[#847733] animate-bounce"></div>
+      <span className="text-2xl font-bold">Scanning the  Help LA Rebuild Database{dots}</span>
     </div>
   );
 };

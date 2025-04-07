@@ -21,10 +21,10 @@ function App() {
 
     if (!input) return;
 
-    setMessages((prev) => [...prev, { text: input, type: "user" }]);
+    // setMessages((prev) => [...prev, { text: input, type: "user" }]);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/search`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/search`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,10 +34,12 @@ function App() {
       });
 
       const data = await response.json();
+      console.log(data);
 
       setMessages((prev) => [
-        ...prev,
+        { text: input, type: "user" },
         { text: data.response, sources: data.sources, type: "bot" },
+        ...prev,
       ]);
     } catch (error) {
       console.error("Error while fetching data:", error);
@@ -57,9 +59,9 @@ function App() {
   useEffect(() => {
     const chatContainer = document.getElementById("chat-container");
     if (chatContainer) {
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+      chatContainer.scrollTop = 0;
     }
-  }, [input, messages]);
+  }, [thinking, messages]);
 
   return (
     <div className="flex flex-col h-screen w-screen bg-inherit 1bg-[#ebe2d9] text-black">
@@ -76,12 +78,12 @@ function App() {
                 handleSubmit(e);
               }
             }}
-            className="w-full p-12 py-8 mr-44 rounded-full border border-gray-300 focus:outline-none focus:border-gray-400 bg-[#f5f2eb] 1shadow-[0_0_15px_rgba(0,0,0,0.5)] 1shadow-white text-[#574c3f] text-2xl"
+            className="w-full p-12 py-8 mr-44 rounded-full border-[6px] border-[#d4af37] focus:outline-none bg-[#2a3524] text-[#d4af37] text-3xl font-extrabold"
             aria-label="Chat message input"
           />
           <button
             type="submit"
-            className="absolute right-8 top-1/2 -translate-y-1/2 py-8 px-12 text-3xl text-[#342f29] bg-[#b9a590]  rounded-full hover:bg-[#f5f2eb]"
+            className="absolute right-8 top-1/2 -translate-y-1/2 py-8 px-12 text-3xl text-[#2a3524] bg-[#d4af37] border-[6px] border-[#2a3524] rounded-full hover:bg-[#f5f2eb]"
             aria-label="Send message"
           >
             HELP
@@ -95,6 +97,11 @@ function App() {
         className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
       >
         <div className="flex-1 max-w-7xl w-full items-center self-center p-4 pb-2 space-y-4">
+          {thinking && 
+          <div>
+            <UserMessage text={input} />
+            <Thinking />
+          </div>}
           {messages.map((msg, index) => (
             <div key={index} className={msg.type === "user" ? "" : ""}>
               {msg.type === "user" ? (
@@ -109,7 +116,6 @@ function App() {
               )}
             </div>
           ))}
-          {thinking && <Thinking />}
         </div>
       </div>
     </div>
