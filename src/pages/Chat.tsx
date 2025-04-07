@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen w-screen bg-inherit 1bg-[#ebe2d9] text-black">
-      <div className={`w-full p-4  self-center max-w-7xl bg-transparent`}>
+      <div className={`w-full p-4  self-center bg-transparent`}>
         <form onSubmit={handleSubmit} className="relative flex px-4 pr-6">
           <input
             type="text"
@@ -97,7 +97,7 @@ function App() {
         id="chat-container"
         className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
       >
-        <div className="flex-1 max-w-7xl w-full items-center self-center p-4 pb-2 space-y-4">
+        <div className="flex-1 w-full items-center self-center p-4 pb-2 space-y-4">
           {thinking && 
           <div>
             <UserMessage text={input} />
