@@ -44,11 +44,12 @@ function App() {
     } catch (error) {
       console.error("Error while fetching data:", error);
       setMessages((prev) => [
-        ...prev,
+        { text: input, type: "user" },
         {
           text: "Sorry, I can't provide answer. Please try again.",
           type: "bot",
         },
+        ...prev,
       ]);
     }
 
