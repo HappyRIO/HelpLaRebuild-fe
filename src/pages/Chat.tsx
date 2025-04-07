@@ -66,11 +66,11 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen w-screen bg-inherit 1bg-[#ebe2d9] text-black">
-      <div className={`w-full p-4  self-center bg-transparent`}>
-        <form onSubmit={handleSubmit} className="relative flex px-4 pr-6">
+      <div className={`w-full self-center bg-transparent`}>
+        <form onSubmit={handleSubmit} className="relative flex p-4 pr-6 max-md:p-2">
           <input
             type="text"
-            disabled={thinking}
+            // disabled={thinking}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
@@ -79,12 +79,12 @@ function App() {
                 handleSubmit(e);
               }
             }}
-            className="w-full p-12 py-8 mr-44 rounded-full border-[6px] border-[#d4af37] focus:outline-none bg-[#2a3524] text-[#d4af37] text-3xl font-extrabold"
+            className="w-full p-12 py-8 mr-44 rounded-full border-[6px] border-[#d4af37] focus:outline-none bg-[#2a3524] text-[#d4af37] text-3xl font-extrabold max-md:p-2 max-md:mr-[72px] max-md:text-2xl"
             aria-label="Chat message input"
           />
           <button
             type="submit"
-            className="absolute right-8 top-1/2 -translate-y-1/2 py-8 px-12 text-3xl text-[#2a3524] bg-[#d4af37] border-[6px] border-[#2a3524] rounded-full hover:bg-[#f5f2eb]"
+            className="absolute right-8 top-1/2 -translate-y-1/2 py-8 px-12 text-3xl text-[#2a3524] bg-[#d4af37] border-[6px] border-[#2a3524] rounded-full hover:bg-[#f5f2eb] max-md:p-2 max-md:text-2xl max-md:right-2"
             aria-label="Send message"
           >
             HELP
@@ -95,9 +95,9 @@ function App() {
       {/* Chat Area */}
       <div
         id="chat-container"
-        className="w-screen flex flex-col items-center self-center overflow-y-auto p-4 space-y-4"
+        className="w-screen flex flex-col items-center self-center overflow-y-auto space-y-4"
       >
-        <div className="flex-1 w-full items-center self-center p-4 pb-2 space-y-4">
+        <div className="flex-1 w-full items-center self-center p-4 pb-2 space-y-4 max-md:p-2 max-md:space-y-2">
           {thinking && 
           <div>
             <UserMessage text={input} />
